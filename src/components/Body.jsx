@@ -2,6 +2,17 @@ import React, { useState } from "react";
 
 function Body() {
   const [mode, setMode] = useState("Natural Language");
+    const [query, setQuery] = useState("");
+    handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle the form submission logic here
+        console.log("Form submitted with query:", query);
+        Axios.post("http://localhost:8080/query", { query: query })
+        .then((response) => {
+          console.log("Response:", response.data);
+          // Handle the response from the server here
+        })
+    }
 
   return (
     <>
@@ -72,9 +83,17 @@ function Body() {
             ) : (
               <>
                 <div className="text-gray-500">Enter your query in natural language:</div>
-                <textarea className="border border-gray-300 rounded-sm p-2 w-full mt-3" rows="4" placeholder="E.g., Show all students who scored above 90%."></textarea>
+                <textarea value={query} onChange={(e)=>{
+setQuery(e.target.value); console.log(query); // Log the query to the console for debugging
+                }} className="border border-gray-300 rounded-sm p-2 w-full mt-3" rows="4" placeholder="E.g., Show all students who scored above 90%."></textarea>
               </>
             )}
+            <div className="flex flex-col-reverse items-start">
+  <button onClick={handleSubmit} className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">
+    Submit
+  </button>
+</div>
+
           </div>
 
           <div className="w-[35vw] p-5 rounded-xl border border-gray-300 shadow-md">
