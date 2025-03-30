@@ -4,6 +4,7 @@ import Axios from "axios";
 function Body() {
   const [mode, setMode] = useState("Natural Language");
     const [query, setQuery] = useState("");
+    const [sqlQuery, setSqlQuery] = useState(""); // State to hold the generated SQL query
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle the form submission logic here
@@ -11,7 +12,7 @@ function Body() {
         Axios.post("http://localhost:8080/query", { query: query })
         .then((response) => {
           console.log("Response:", response.data);
-          // Handle the response from the server here
+          setSqlQuery(response.data.sqlQuery); // Update the sqlQuery state with the response
         })
     }
 
@@ -99,9 +100,10 @@ setQuery(e.target.value); console.log(query); // Log the query to the console fo
 
           <div className="w-[35vw] p-5 rounded-xl border border-gray-300 shadow-md">
             <div className="text-2xl font-bold">Generated SQL</div>
-            <div className="text-gray-500">Your SQL query will appear here</div>
-           <br />
-            
+            <div className="text-gray-500">
+              {sqlQuery ? sqlQuery : "Your SQL query will appear here after you generate it."}
+            </div>
+            <br />
             <div className="space-mono-regular font-medium text-sm ">Your SQL query will appear here after you generate it.</div>
             <br />
             <div className="flex justify-between">
