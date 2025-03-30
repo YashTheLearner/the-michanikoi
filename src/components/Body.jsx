@@ -101,10 +101,10 @@ setQuery(e.target.value); console.log(query); // Log the query to the console fo
           <div className="w-[35vw] p-5 rounded-xl border border-gray-300 shadow-md">
             <div className="text-2xl font-bold">Generated SQL</div>
             <div className="text-gray-500">
-              {sqlQuery ? sqlQuery : "Your SQL query will appear here after you generate it."}
+             Your SQL query will appear here after you generate it.
             </div>
             <br />
-            <div className="space-mono-regular font-medium text-sm ">Your SQL query will appear here after you generate it.</div>
+            <div className="space-mono-regular font-medium text-sm "> {sqlQuery ? sqlQuery : "Your SQL query will appear here after you generate it."}</div>
             <br />
             <div className="flex justify-between">
                 <div className="border-gray-300 px-2 py-1 border-1">Clear</div>
