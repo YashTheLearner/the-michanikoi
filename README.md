@@ -1,3 +1,18 @@
+# VakyaSQL
+
+🤖 VakyaSQL is a text-to-query generator and command-line interface (CLI) tool that converts natural language queries into structured SQL queries. It simplifies database interactions, making it accessible for both technical and the non-technical users.
+
+# Technologies Used
+
+1. Python with flask web framework
+2. React front-end Javascript library
+
+# How to run?
+
+install all the dependencies
+and then start the server 
+```flask -h localhost -p 8080```
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
