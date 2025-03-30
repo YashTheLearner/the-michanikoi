@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function Body() {
   const [mode, setMode] = useState("Natural Language");
     const [query, setQuery] = useState("");
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         // Handle the form submission logic here
         console.log("Form submitted with query:", query);
