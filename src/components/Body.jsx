@@ -35,7 +35,7 @@ function Body() {
 
   return (
     <>
-      <div className="my-7">
+      <div className="my-10">
         <div className="mx-7 flex flex-col gap-2 items-center justify-center">
           <div className="text-5xl font-bold text-gray-900">
             The Ultimate Query Converter
