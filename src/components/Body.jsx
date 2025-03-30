@@ -49,12 +49,12 @@ function Body() {
           <div className="p-5 w-[35vw] border border-gray-300 shadow-md rounded-xl">
             <div className="flex justify-between items-center">
               <div className="text-2xl font-bold">{mode}</div>
-              <button 
+              {/* <button 
                 className="px-3 py-1 bg-gray-200 rounded text-sm" 
                 onClick={() => setMode(mode === "Natural Language" ? "Schema" : "Natural Language")}
               >
                 Switch to {mode === "Natural Language" ? "Schema" : "Natural Language"}
-              </button>
+              </button> */}
             </div>
             {mode === "Schema" ? (
               <>
