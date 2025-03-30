@@ -12,9 +12,26 @@ function Body() {
         Axios.post("http://localhost:8080/query", { query: query })
         .then((response) => {
           console.log("Response:", response.data);
-          setSqlQuery(response.data.sqlQuery); // Update the sqlQuery state with the response
+          setSqlQuery(response.data.sql_query); // Update the sqlQuery state with the response
         })
     }
+    const handleclear = ()=>{
+      setSqlQuery("")
+    }
+    // Implement handle copy function and copy text to clipboard
+    const handleCopy = () => {
+      if (sqlQuery) {
+      navigator.clipboard.writeText(sqlQuery)
+        .then(() => {
+        alert("SQL query copied to clipboard!");
+        })
+        .catch((err) => {
+        console.error("Failed to copy text: ", err);
+        });
+      } else {
+      console.log("No SQL query to copy.");
+      }
+    };
 
   return (
     <>
@@ -101,14 +118,14 @@ setQuery(e.target.value); console.log(query); // Log the query to the console fo
           <div className="w-[35vw] p-5 rounded-xl border border-gray-300 shadow-md">
             <div className="text-2xl font-bold">Generated SQL</div>
             <div className="text-gray-500">
-             Your SQL query will appear here after you generate it.
+             Your SQL query will appear here.
             </div>
             <br />
             <div className="space-mono-regular font-medium text-sm "> {sqlQuery ? sqlQuery : "Your SQL query will appear here after you generate it."}</div>
             <br />
             <div className="flex justify-between">
-                <div className="border-gray-300 px-2 py-1 border-1">Clear</div>
-                <div className="border-gray-300 px-2 py-1 border-1">Copy to Clipboard</div>
+                <div onClick={handleclear} className="border-gray-300 px-2 py-1 border-1">Clear</div>
+                <div onClick={handleCopy} className="border-gray-300 px-2 py-1 border-1">Copy to Clipboard</div>
             </div>
           </div>
         </div>
